@@ -1,16 +1,26 @@
 import { executeQuery } from "../database/database.js";
+import { config } from "../config/config.js"
 
-const getHello = async() => {
-  const res = await executeQuery("SELECT message FROM messages ORDER BY id DESC LIMIT 1");
-  if (res && res.rowCount > 0) {
-    return res.rowsOfObjects()[0].message;
-  }
+const morning = config.morningDBname;
+const evening = config.eveningDBname;
 
-  return 'No messages available';
+const addMorning = async(date, sleep_duration, sleep_quality, user_id) => {
+  await executeQuery(`INSERT INTO ${morning} (date, sleep_duration, sleep_quality, user_id) VALUES ($1, $2, $3, $4, $5);`, 
+  date, sleep_duration, sleep_quality, user_id);
+}
+const checkMorning = async(date) => {
+  res = await executeQuery(`SELECT * FROM ${morning} WHERE date = $1;`, date)
+  return res.rowsOfObjects()
 }
 
-const setHello = async(newMessage) => {
-  await executeQuery("INSERT INTO messages (message, sender) VALUES ($1, 'API');", newMessage);
+const addEvening = async(date, sport_time, study_time, eating, mood, user_id) => {
+  await executeQuery(`INSERT INTO ${evening} (date, sport_time, study_time, eating, mood, user_id) VALUES ($1, $2, $3, $4, $5);`, 
+  date, sport_time, study_time, eating, mood, user_id);
+}
+
+const checkEvening = async(date) => {
+  res = await executeQuery(`SELECT * FROM ${evening} WHERE date = $1;`, date)
+  return res.rowsOfObjects()
 }
 
 export { getHello, setHello };

@@ -8,11 +8,16 @@ const errorMiddleware = async(context, next) => {
   }
 }
 
-const requestTimingMiddleware = async({ request }, next) => {
-  const start = Date.now();
-  await next();
-  const ms = Date.now() - start;
-  console.log(`${request.method} ${request.url.pathname} - ${ms} ms`);
+const authenticationMiddleware = async({request, response, session}, next) => {
+  if (request.url.pathname.startsWith('/admin')) {
+    if (session && await session.get('authenticated')) {
+      await next();
+    } else {
+      response.status = 401;
+    }
+  } else {
+    await next();
+  }
 }
 
 const serveStaticFilesMiddleware = async(context, next) => {
@@ -28,4 +33,4 @@ const serveStaticFilesMiddleware = async(context, next) => {
   }
 }
 
-export { errorMiddleware, requestTimingMiddleware, serveStaticFilesMiddleware };
+export { errorMiddleware, authenticationMiddleware, serveStaticFilesMiddleware };
