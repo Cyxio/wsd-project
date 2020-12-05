@@ -4,9 +4,9 @@ import { config } from "../config/config.js"
 const morning = config.morningDBname;
 const evening = config.eveningDBname;
 
-const addMorning = async(date, sleep_duration, sleep_quality, user_id) => {
-  await executeQuery(`INSERT INTO ${morning} (date, sleep_duration, sleep_quality, user_id) VALUES ($1, $2, $3, $4, $5);`, 
-  date, sleep_duration, sleep_quality, user_id);
+const addMorning = async(date, sleep_duration, sleep_quality, mood, user_id) => {
+  await executeQuery(`INSERT INTO ${morning} (date, sleep_duration, sleep_quality, mood, user_id) VALUES ($1, $2, $3, $4, $5);`, 
+  date, sleep_duration, sleep_quality, mood, user_id);
 }
 const checkMorning = async(date) => {
   res = await executeQuery(`SELECT * FROM ${morning} WHERE date = $1;`, date)
@@ -14,7 +14,7 @@ const checkMorning = async(date) => {
 }
 
 const addEvening = async(date, sport_time, study_time, eating, mood, user_id) => {
-  await executeQuery(`INSERT INTO ${evening} (date, sport_time, study_time, eating, mood, user_id) VALUES ($1, $2, $3, $4, $5);`, 
+  await executeQuery(`INSERT INTO ${evening} (date, sport_time, study_time, eating, mood, user_id) VALUES ($1, $2, $3, $4, $5, $6);`, 
   date, sport_time, study_time, eating, mood, user_id);
 }
 
@@ -23,4 +23,4 @@ const checkEvening = async(date) => {
   return res.rowsOfObjects()
 }
 
-export { getHello, setHello };
+export { addMorning, checkMorning, addEvening, checkEvening };

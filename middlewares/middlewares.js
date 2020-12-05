@@ -9,7 +9,7 @@ const errorMiddleware = async(context, next) => {
 }
 
 const authenticationMiddleware = async({request, response, session}, next) => {
-  if (request.url.pathname.startsWith('/admin')) {
+  if (request.url.pathname.startsWith('/behaviour/reporting')) {
     if (session && await session.get('authenticated')) {
       await next();
     } else {
