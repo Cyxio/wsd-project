@@ -1,33 +1,38 @@
 <%- include('./partials/header.ejs') %>
-<h1>Morning report</h1>
-<form action="/behavior/reporting/morning">
-    <h3>Sleep duration</h3>
+<h1>Evening report</h1>
+<form method="POST" action="/behavior/reporting/evening">
+    <h3>Sports and exercise</h3>
     <fieldset>
-        <label for="sleep_d">Number of hours slept</label>
-        <input type="number" id="sleep_d" name="sleep_duration">
+        <label for="sport">Number of hours spent on sports and exercise</label>
+        <input type="number" class="width-25" id="sport" name="sport_time">
     </fieldset>
-    <h3>Sleep quality</h3>
+    <h3>Studying</h3>
+    <fieldset>
+        <label for="study">Number of hours spent studying</label>
+        <input type="number" id="study" name="study_time">
+    </fieldset>
+    <h3>Regularity and quality of eating</h3>
     <fieldset>
         <div class="row">
             <div class="column">
-                <input type="radio" id="sleep1" name="sleep_quality" value="1">
-                <label class="label-inline" for="sleep1"><b>Very poor</b></label>
+                <input type="radio" id="eat1" name="eating" value="1">
+                <label class="label-inline" for="eat1"><b>Very poor</b></label>
             </div>
             <div class="column">
-                <input type="radio" id="sleep2" name="sleep_quality" value="1">
-                <label class="label-inline" for="sleep2"><b>Bad</b></label>
+                <input type="radio" id="eat2" name="eating" value="1">
+                <label class="label-inline" for="eat2"><b>Bad</b></label>
             </div>
             <div class="column">
-                <input type="radio" id="sleep3" name="sleep_quality" value="1">
-                <label class="label-inline" for="sleep3"><b>Okay</b></label>
+                <input type="radio" id="eat3" name="eating" value="1">
+                <label class="label-inline" for="eat3"><b>Okay</b></label>
             </div>
             <div class="column">
-                <input type="radio" id="sleep4" name="sleep_quality" value="1">
-                <label class="label-inline" for="sleep4"><b>Good</b></label>
+                <input type="radio" id="eat4" name="eating" value="1">
+                <label class="label-inline" for="eat4"><b>Good</b></label>
             </div>
             <div class="column">
-                <input type="radio" id="sleep5" name="sleep_quality" value="1">
-                <label class="label-inline" for="sleep5"><b>Excellent</b></label>
+                <input type="radio" id="eat5" name="eating" value="1">
+                <label class="label-inline" for="eat5"><b>Excellent</b></label>
             </div>
         </div>
     </fieldset>

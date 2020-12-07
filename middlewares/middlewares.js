@@ -9,14 +9,15 @@ const errorMiddleware = async(context, next) => {
 }
 
 const authenticationMiddleware = async({request, response, session}, next) => {
-  if (request.url.pathname.startsWith('/behaviour/reporting')) {
+  const pname = request.url.pathname;
+  if (pname === '/' || pname.startsWith('/api') || pname.startsWith('/auth') || pname.startsWith('/static')) {
+    await next();
+  } else {
     if (session && await session.get('authenticated')) {
       await next();
     } else {
-      response.status = 401;
+      response.redirect("/auth/login");
     }
-  } else {
-    await next();
   }
 }
 

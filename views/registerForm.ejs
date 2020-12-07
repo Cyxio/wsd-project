@@ -1,0 +1,17 @@
+<%- include('./partials/header.ejs') %>
+<h1>Register</h1>
+<div id="errordiv">
+    <% if (error) { %><h2><%= error %></h2><% } %>
+</div>
+<form method="POST" action="/auth/registration">
+    <fieldset>
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password">
+        <label for="verification">Enter password again</label>
+        <input type="password" id="verification" name="verification">
+        <input type="submit" value="Register">
+    </fieldset>
+</form>
+<%- include('./partials/footer.ejs') %>
