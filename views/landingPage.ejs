@@ -1,4 +1,20 @@
 <%- include('./partials/header.ejs') %>
-<h1>Health Application</h1>
-<p>This is a web application for self-monitoring purposes. This application provides users an opportunity to report their behavior daily.</p>
+<h1>Welcome to Healthalyzer™</h1>
+<p>Healthalyzer™ is a self-monitoring tool for everyday use! You can submit your own data and compare it to others, if you wish.</p>
+<% if (!loggedAs) { %>
+    <div class="row">
+        <div class="column">
+            <h3>New user? Register here!</h3>
+            <a class="button" href="/auth/registration">Register</a>
+        </div>
+        <div class="column">
+            <h3>Already registered? Login!</h3>
+            <a class="button" href="/auth/login">Login</a>
+        </div>
+    </div>
+<% } else { %>
+    <div class="row">
+        <a class="button button-large column column-50 column-offset-25" href="/behavior/reporting">Enter a report</a>
+    </div>
+<% } %>
 <%- include('./partials/footer.ejs') %>

@@ -1,15 +1,13 @@
 <%- include('./partials/header.ejs') %>
 <h1>Login</h1>
-<div id="errordiv">
-    <% if (error) { %><h2><%= error %></h2><% } %>
-</div>
+<%- include('./partials/errors.ejs') %>
 <form method="POST" action="/auth/login">
     <fieldset>
         <label for="email">Email</label>
         <input type="email" id="email" name="email">
         <label for="password">Password</label>
-        <input type="password" id="password" name="password">
-        <a class="button button-outline float-right" href="/auth/registration">Register</a>
+        <input type="password" id="password" name="password">        
+        <a class="button button-outline float-right" href="/auth/registration">Not yet registered?</a>
         <input type="submit" value="Login">
     </fieldset>
 </form>

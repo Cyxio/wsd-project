@@ -1,8 +1,6 @@
 <%- include('./partials/header.ejs') %>
 <h1>Register</h1>
-<div id="errordiv">
-    <% if (error) { %><h2><%= error %></h2><% } %>
-</div>
+<%- include('./partials/errors.ejs') %>
 <form method="POST" action="/auth/registration">
     <fieldset>
         <label for="email">Email</label>

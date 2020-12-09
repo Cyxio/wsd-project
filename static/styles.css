@@ -39,3 +39,7 @@ input[type=number] {
     line-height: 4.5rem;
     padding: 0 2rem;
   }
+
+#errordiv {
+  color: red;
+}

@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Health application</title>
-    <link rel="stylesheet" href="../../static/styles.css">
+    <title>Healthalyzer™</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.min.css">
+    <link rel="stylesheet" href="../../static/styles.css">
   </head>
   <body>
     <div class="navigation">
-      <a class="navigation-link" href="/">Health Application</a>
+      <a class="navigation-link" href="/">Healthalyzer™</a>
       <a class="navigation-link" href="/behavior/reporting">Reporting</a>
       <% if (loggedAs) { %>
         <a class="navigation-link float-right" href="/auth/logout">Log out</a>
-        <a class="navigation-link float-right">Logged in as <%=loggedAs%></a>
+        <p class="navigation-link float-right">Logged in as <%=loggedAs%></p>
       <% } else { %>
         <a class="navigation-link float-right" href="/auth/login">Log in</a>
       <% } %>

@@ -16,7 +16,9 @@ router.get('/auth/logout', healthController.logout);
 
 router.get('/behavior/reporting', healthController.reporting);
 router.get('/behavior/reporting/morning', healthController.morningReport);
+router.post('/behavior/reporting/morning', healthController.postMorningReport);
 router.get('/behavior/reporting/evening', healthController.eveningReport);
+router.post('/behavior/reporting/evening', healthController.postEveningReport);
 // router.get('/auth/registration', healthApi.register);
 // router.post('/auth/login', healthApi.login);
 // router.post('/auth/logout', healthApi.logout);

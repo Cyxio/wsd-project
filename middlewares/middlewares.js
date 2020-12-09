@@ -9,7 +9,13 @@ const errorMiddleware = async(context, next) => {
 }
 
 const authenticationMiddleware = async({request, response, session}, next) => {
+  let id = "anonymous";
+  const user = await session.get('user');
+  if(user){
+    id = user.id;
+  }
   const pname = request.url.pathname;
+  console.log(`Time: ${new Date().toISOString()} method: ${request.method} path: ${pname} id: ${id}`);
   if (pname === '/' || pname.startsWith('/api') || pname.startsWith('/auth') || pname.startsWith('/static')) {
     await next();
   } else {
