@@ -43,3 +43,7 @@ input[type=number] {
 #errordiv {
   color: red;
 }
+
+#confirmationdiv {
+  color:lightgreen;
+}

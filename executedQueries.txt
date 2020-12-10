@@ -24,3 +24,34 @@ CREATE TABLE eveningreports (
   mood INT NOT NULL,
   user_id INTEGER REFERENCES users(id)
 );
+
+=============
+FOR TESTING:
+=============
+
+CREATE TABLE test_users (
+  id SERIAL PRIMARY KEY,
+  email VARCHAR(320) NOT NULL,
+  password CHAR(60) NOT NULL
+);
+
+CREATE UNIQUE INDEX ON test_users((lower(email)));
+
+CREATE TABLE test_morningreports (
+  id SERIAL PRIMARY KEY,
+  date DATE NOT NULL,
+  sleep_duration FLOAT NOT NULL,
+  sleep_quality INT NOT NULL,
+  mood INT NOT NULL,
+  user_id INTEGER REFERENCES test_users(id)
+);
+
+CREATE TABLE test_eveningreports (
+  id SERIAL PRIMARY KEY,
+  date DATE NOT NULL,
+  sport_time FLOAT NOT NULL,
+  study_time FLOAT NOT NULL,
+  eating INT NOT NULL,
+  mood INT NOT NULL,
+  user_id INTEGER REFERENCES test_users(id)
+);

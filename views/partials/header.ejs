@@ -6,11 +6,13 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.min.css">
     <link rel="stylesheet" href="../../static/styles.css">
+    <link rel="icon" type="image/png" href="../../static/favicon.png"/>
   </head>
   <body>
     <div class="navigation">
       <a class="navigation-link" href="/">Healthalyzer™</a>
       <a class="navigation-link" href="/behavior/reporting">Reporting</a>
+      <a class="navigation-link" href="/behavior/summary">Summary</a>
       <% if (loggedAs) { %>
         <a class="navigation-link float-right" href="/auth/logout">Log out</a>
         <p class="navigation-link float-right">Logged in as <%=loggedAs%></p>

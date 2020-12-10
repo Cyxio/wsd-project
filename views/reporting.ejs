@@ -1,5 +1,11 @@
 <%- include('./partials/header.ejs') %>
 <h1>Reporting</h1>
+<div id="confirmationdiv">
+    <% if (confirmation) { %><h2><%=confirmation%></h2><% } %>
+</div>
+<div>
+    <% if (completed) { %><h2><%=completed%></h2><% } %>
+</div>
 <div class="row">
     <a class="button button-large column column-40" href="/behavior/reporting/morning">Report morning</a>
     <a class="button button-large column column-40 column-offset-20" href="/behavior/reporting/evening">Report evening</a>

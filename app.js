@@ -1,4 +1,4 @@
-import { Application, Session } from "./deps.js";
+import { Application, Session, oakCors, config } from "./deps.js";
 import { router } from "./routes/routes.js";
 import * as middleware from './middlewares/middlewares.js';
 import { viewEngine, engineFactory, adapterFactory } from "./deps.js";
@@ -20,10 +20,12 @@ app.use(middleware.errorMiddleware);
 app.use(middleware.authenticationMiddleware);
 app.use(middleware.serveStaticFilesMiddleware);
 
+app.use(oakCors());
+
 app.use(router.routes());
 
-if (!Deno.env.get('TEST_ENVIRONMENT')) {
+if (config().TEST_ENVIRONMENT !== "true") {
     app.listen({ port: 7777 });
-  }
+}
     
-  export default app;
+export { app };

@@ -1,6 +1,10 @@
 <%- include('./partials/header.ejs') %>
 <h1>Welcome to Healthalyzer™</h1>
 <p>Healthalyzer™ is a self-monitoring tool for everyday use! You can submit your own data and compare it to others, if you wish.</p>
+<% if (moods) { %>
+    <p><%= moods.message %></p>
+    <p>The average mood of all users for yesterday was <%=moods.yesterday%>, compared to the average of <%=moods.today%> for today.</p>
+<% } %>
 <% if (!loggedAs) { %>
     <div class="row">
         <div class="column">
@@ -13,6 +17,7 @@
         </div>
     </div>
 <% } else { %>
+    <h3>Welcome back!</h3>
     <div class="row">
         <a class="button button-large column column-50 column-offset-25" href="/behavior/reporting">Enter a report</a>
     </div>

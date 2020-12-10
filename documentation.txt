@@ -1,0 +1,21 @@
+Welcome to Healthalyzer™!
+
+In order to run the program, the user must fill in the database credentials and also create the required tables in the database.
+The credentials are to be inserted in the '.env' file, so that they will be loaded as environmental variables.
+.env file also contains a variable that is required for testing, the TEST_ENVIRONMENT variable.
+
+The necessary CREATE TABLE sql queries are found in the executedQueries.txt. The first four queries allow for the program to be
+run locally with all features. The last four queries are required for setting up testing tables, which are used in tests.js.
+
+Running the application:
+1. Fill out PGHOST, PGDATABASE, PGUSER, PGPASSWORD and PGPORT.
+2. Check that TEST_ENVIRONMENT="false".
+3. Use the first 4 queries from executedQueries.txt (CREATE TABLE, CREATE UNIQUE INDEX, CREATE TABLE, CREATE TABLE)
+4. Run using "deno run --allow-net --allow-env --allow-read --unstable app.js"
+
+When you wish run the tests for the application, change the TEST_ENVIRONMENT to "true" in .env (TEST_ENVIRONMENT="true").
+Remember to run the additional 4 queries in executedQueries.txt to create testing tables.
+
+After that, run using "deno test --allow-net --allow-env --allow-read --unstable tests/tests.js".
+
+The application is also available online at https://wsd-project-healthalyzer.herokuapp.com/ for testing.

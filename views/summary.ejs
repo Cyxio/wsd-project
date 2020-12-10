@@ -1,0 +1,71 @@
+<%- include('./partials/header.ejs') %>
+<h1>Summary</h1>
+<h2>Monthly averages</h2>
+<form method="POST" action="/behavior/summary">
+    <div class="row">
+        <label class="label-inline column" for="month">Select a month to calculate averages from:</label>
+        <input class="column" id="month" type="month" name="month" value="<%= defmonth %>">
+        <input class="column" type="submit" value="Calculate">
+    </div>
+<% if (month.successful) { %>
+    <table>
+        <thead>
+            <tr>
+                <th>Sleep duration</th>
+                <th>Time spent on sports and exercise</th>
+                <th>Time spent studying</th>
+                <th>Sleep quality</th>
+                <th>Eating</th>
+                <th>Generic mood</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><%=month.sleep_duration%></td>
+                <td><%=month.sport_time%></td>
+                <td><%=month.study_time%></td>
+                <td><%=month.sleep_quality%></td>
+                <td><%=month.eating%></td>
+                <td><%=month.mood%></td>
+            </tr>
+        </tbody>
+    </table>
+<% } else { %>
+    <br>
+    <h3>There is no data for the chosen month.</h3>
+<% } %>
+<h2>Weekly averages</h2>
+    <div class="row">
+        <label class="label-inline column" for="month">Select a week to calculate averages from:</label>
+        <input class="column" id="month" type="week" name="week" value="<%= defweek %>">
+        <input class="column" type="submit" value="Calculate">
+    </div>
+</form>
+<% if (week.successful) { %>
+    <table>
+        <thead>
+            <tr>
+                <th>Sleep duration</th>
+                <th>Time spent on sports and exercise</th>
+                <th>Time spent studying</th>
+                <th>Sleep quality</th>
+                <th>Eating</th>
+                <th>Generic mood</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><%=week.sleep_duration%></td>
+                <td><%=week.sport_time%></td>
+                <td><%=week.study_time%></td>
+                <td><%=week.sleep_quality%></td>
+                <td><%=week.eating%></td>
+                <td><%=week.mood%></td>
+            </tr>
+        </tbody>
+    </table>
+<% } else { %>
+    <br>
+    <h3>There is no data for the chosen week.</h3>
+<% } %>
+<%- include('./partials/footer.ejs') %>

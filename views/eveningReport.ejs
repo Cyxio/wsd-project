@@ -1,71 +1,34 @@
 <%- include('./partials/header.ejs') %>
 <h1>Evening report</h1>
 <%- include('./partials/errors.ejs') %>
+<% const names = ['', 'Very poor', 'Bad', 'Okay', 'Good', 'Excellent']; %>
 <form method="POST" action="/behavior/reporting/evening">
     <h3>Sports and exercise</h3>
-    <fieldset>
-        <label for="sport">Number of hours spent on sports and exercise</label>
-        <input type="number" class="width-25" id="sport" name="sport_time">
-    </fieldset>
+    <label for="sport">Number of hours spent on sports and exercise</label>
+    <input type="number" id="sport" name="sport_time" step="0.1" value="<%=populated[0]%>">
     <h3>Studying</h3>
-    <fieldset>
-        <label for="study">Number of hours spent studying</label>
-        <input type="number" id="study" name="study_time">
-    </fieldset>
+    <label for="study">Number of hours spent studying</label>
+    <input type="number" id="study" name="study_time" step="0.1" value="<%=populated[1]%>">
     <h3>Regularity and quality of eating</h3>
-    <fieldset>
-        <div class="row">
-            <div class="column">
-                <input type="radio" id="eat1" name="eating" value="1">
-                <label class="label-inline" for="eat1"><b>Very poor</b></label>
-            </div>
-            <div class="column">
-                <input type="radio" id="eat2" name="eating" value="1">
-                <label class="label-inline" for="eat2"><b>Bad</b></label>
-            </div>
-            <div class="column">
-                <input type="radio" id="eat3" name="eating" value="1">
-                <label class="label-inline" for="eat3"><b>Okay</b></label>
-            </div>
-            <div class="column">
-                <input type="radio" id="eat4" name="eating" value="1">
-                <label class="label-inline" for="eat4"><b>Good</b></label>
-            </div>
-            <div class="column">
-                <input type="radio" id="eat5" name="eating" value="1">
-                <label class="label-inline" for="eat5"><b>Excellent</b></label>
-            </div>
+    <div class="row">
+        <% for( let index = 1; index < 6; index++ ) { %>
+        <div class="column">
+            <input type="radio" id="eat<%=index%>" name="eating" value="<%=index%>" <% if (populated.includes(`eat${index}`)) { %>checked="checked"<% } %>>
+            <label class="label-inline" for="eat<%=index%>"><b><%=names[index]%></b></label>
         </div>
-    </fieldset>
+        <% } %>
+    </div>
     <h3>Generic mood</h3>
-    <fieldset>
-        <div class="row">
-            <div class="column">
-                <input type="radio" id="mood1" name="mood" value="1">
-                <label class="label-inline" for="mood1"><b>Very poor</b></label>
-            </div>
-            <div class="column">
-                <input type="radio" id="mood2" name="mood" value="1">
-                <label class="label-inline" for="mood2"><b>Bad</b></label>
-            </div>
-            <div class="column">
-                <input type="radio" id="mood3" name="mood" value="1">
-                <label class="label-inline" for="mood3"><b>Okay</b></label>
-            </div>
-            <div class="column">
-                <input type="radio" id="mood4" name="mood" value="1">
-                <label class="label-inline" for="mood4"><b>Good</b></label>
-            </div>
-            <div class="column">
-                <input type="radio" id="mood5" name="mood" value="1">
-                <label class="label-inline" for="mood5"><b>Excellent</b></label>
-            </div>
+    <div class="row">
+        <% for( let index = 1; index < 6; index++ ) { %>
+        <div class="column">
+            <input type="radio" id="mood<%=index%>" name="mood" value="<%=index%>" <% if (populated.includes(`mood${index}`)) { %>checked="checked"<% } %>>
+            <label class="label-inline" for="mood<%=index%>"><b><%=names[index]%></b></label>
         </div>
-    </fieldset>
+        <% } %>
+    </div>
     <h3>Date for submission</h3>
-    <fieldset>
-        <input type="date" name="date" value="<%= dateToday %>">
-        <input type="submit" value="Submit report">
-    </fieldset>
+    <input type="date" name="date" value="<%= dateToday %>">
+    <input type="submit" value="Submit report">
 </form>
 <%- include('./partials/footer.ejs') %>

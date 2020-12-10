@@ -1,13 +1,22 @@
-let config = {};
-config.userDBname = 'users';
-config.morningDBname = 'morningreports';
-config.eveningDBname = 'eveningreports';
-config.database = {
-    hostname: "hattie.db.elephantsql.com",
-    database: "ghxxuwkh",
-    user: "ghxxuwkh",
-    password: "qnva33c4lZffNjJDjnBKK0ZMqiHBxeF6",
-    port: 5432
+import { config } from "../deps.js"
+
+
+let configs = {};
+configs.userDBname = 'users';
+configs.morningDBname = 'morningreports';
+configs.eveningDBname = 'eveningreports';
+configs.database = {
+    hostname: config().PGHOST,
+    database: config().PGDATABASE,
+    user: config().PGUSER,
+    password: config().PGPASSWORD,
+    port: Number(config().PGPORT)
 };
 
-export { config }; 
+if (config().TEST_ENVIRONMENT === "true"){
+    configs.userDBname = 'test_users';
+    configs.morningDBname = 'test_morningreports';
+    configs.eveningDBname = 'test_eveningreports';
+}
+
+export { configs }; 
