@@ -306,7 +306,7 @@ Deno.test({
     async fn() {
         await clearTables(true, false);
         const testClient = await superoak(app);
-        await testClient.post("/auth/registration").send('email=uno@uno&password=uno&verification=uno')
+        await testClient.post("/auth/registration").send('email=yeet@yeet&password=yeet&verification=yeet')
         const user = await executeQuery(`SELECT id FROM ${users};`);
         const id1 = user.rowsOfObjects()[0].id;
         const id2 = user.rowsOfObjects()[1].id;
@@ -396,11 +396,11 @@ Deno.test({
         await healthApi.weekSummary({params: {year:'2020', month:'12', day:'10'}, response: response})
         assertEquals(response, {
             body: {
-            mood: "3.88",
+            mood: "4.13",
             sleep_duration: "6.50",
             sleep_quality: "2.00",
-            sport_time: "5.00",
-            study_time: "2.00",
+            sport_time: "3.50",
+            study_time: "6.00",
             },
         })
     },

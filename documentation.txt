@@ -19,3 +19,6 @@ Remember to run the additional 4 queries in executedQueries.txt to create testin
 After that, run using "deno test --allow-net --allow-env --allow-read --unstable tests/tests.js".
 
 The application is also available online at https://wsd-project-healthalyzer.herokuapp.com/ for testing.
+
+Disclaimer: Creating and examining database entries close to midnight might cause some issues, as not all html elements 
+and java Date() objects take timezones/daylight savings into account correctly.
