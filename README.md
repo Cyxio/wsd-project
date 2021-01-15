@@ -7,4 +7,6 @@ A health-monitoring app for self-improvement purposes. Allows tracking and summa
 Available for testing at https://wsd-project-healthalyzer.herokuapp.com/
 Local testing available by running with Deno, instructions found in documentation.txt
 
+Email verification is not needed, works like a username.
+
 Project was almost finished and tested locally before creating this repository, which explains the commit messages :D
